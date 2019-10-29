@@ -7,7 +7,7 @@ module.exports = buildSchema(
         english: String!
         french: String!
         picture: String!
-        quiz: Tag!
+        quiz: Quiz!
       }
 
       type Quiz{
@@ -27,9 +27,13 @@ module.exports = buildSchema(
         name: String!
       }
 
+      type RootQuery{
+        cards: [Card!]!
+      }
+
       type RootMutation {
-        createQuiz(cardInput: CardInput): Card
-        createUser(quizInput: QuizInput): QuizInput
+        createCard(cardInput: CardInput): Card
+        createQuiz(quizInput: QuizInput): Quiz
       }
 
       schema{

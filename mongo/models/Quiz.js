@@ -13,7 +13,7 @@ const QuizSchema = new Schema({
   ]
 });
 
-const Quiz = mongoose.model("Quiz", QuizSchema);
+module.exports = mongoose.model("Quiz", QuizSchema);
 
 Quiz.create({
   name: "Clothes",
@@ -44,5 +44,3 @@ Quiz.create({
     }
   ]
 });
-
-module.exports = Quiz;

@@ -2,12 +2,12 @@ require("dotenv").config();
 
 const graphqlHTTP = require("express-graphql");
 const express = require("express");
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const port = process.env.PORT || 5000;
 const app = express();
-const graphQLSchema = require("./graphql/schema");
+const graphQLSchema = require("./graphql/schemas");
 const graphQLResolvers = require("./graphql/resolvers");
 
 app.use(express.json());
@@ -22,7 +22,7 @@ app.use(
   })
 );
 
-const uri = process.env.ATLAS_URI;
+const uri = process.env.MONGO_DB;
 
 mongoose.connect(uri, {
   useNewUrlParser: true,
