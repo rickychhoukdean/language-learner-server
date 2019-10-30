@@ -11,26 +11,26 @@ module.exports = buildSchema(
       }
 
       type Quiz{
-        _id: ID!
-        name: String!
-        cards: [Card]!
+        _id: ID
+        name: String
+        cards: [Card]
       }
 
       input CardInput{
-        name: String!
-        english: String!
-        french: String!
-        picture: String!
+        english: String
+        french: String
+        picture: String
+        quiz: QuizInput
       }
 
       input QuizInput{
-        name: String!
+        name: String
       }
 
       type RootQuery{
         quiz: [Quiz]
         cards: [Card]
-        card(english: String): Card! 
+        card(english: String): Card
       }
 
       type RootMutation {

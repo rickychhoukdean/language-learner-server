@@ -31,11 +31,20 @@ module.exports = {
     quiz
       .save()
       .then(result => {
-        console.log(result);
-        return {...result._doc};
+        return { ...result._doc };
       })
       .catch(err => {
         console.log(err);
       });
+  },
+  createCard: async args => {
+    console.log(args.cardInput);
+
+    const card = new Card({
+      english: args.cardInput.english,
+      french: args.cardInput.french,
+      picture: args.cardInput.picture,
+      quiz: args.cardInput.quiz
+    });
   }
 };
