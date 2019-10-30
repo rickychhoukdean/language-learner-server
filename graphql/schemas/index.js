@@ -3,11 +3,11 @@ const { buildSchema } = require("graphql");
 module.exports = buildSchema(
   `
       type Card{
-        _id: ID!
-        english: String!
-        french: String!
-        picture: String!
-        quiz: Quiz!
+        _id: ID
+        english: String
+        french: String
+        picture: String
+        quiz: Quiz
       }
 
       type Quiz{
@@ -28,7 +28,9 @@ module.exports = buildSchema(
       }
 
       type RootQuery{
-        cards: [Card!]!
+        quizzes: [Quiz]
+        cards: [Card]
+        card(english: String): Card! 
       }
 
       type RootMutation {

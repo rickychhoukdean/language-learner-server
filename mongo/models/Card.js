@@ -16,7 +16,4 @@ const CardSchema = new Schema({
     ref: "Quiz"
   }
 });
-
-const Card = mongoose.model("Card", CardSchema);
-
-module.exports = Card;
+module.exports =  mongoose.model("Card", CardSchema);

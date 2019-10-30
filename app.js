@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const graphqlHTTP = require("express-graphql");
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const port = process.env.PORT || 5000;
@@ -24,17 +23,17 @@ app.use(
 
 const uri = process.env.MONGO_DB;
 
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true
-});
-
-const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("Mongodb database connection established successfully");
-});
-
-app.listen(port, () => {
-  console.log(`the server is running on ${port}`);
-});
+mongoose
+  .connect(uri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`the server is running on ${port}`);
+    });
+  })
+  .catch(err => {
+    console.log(err);
+  });
