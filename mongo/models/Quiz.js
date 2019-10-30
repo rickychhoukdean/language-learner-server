@@ -22,7 +22,7 @@ Quiz.create({
       english: "sweater",
       french: "le sweater",
       picture:
-        "`https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/408712/item/goods_04_408712.jpg?width=1557&impolicy=quality_75`"
+        "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/408712/item/goods_04_408712.jpg?width=1557&impolicy=quality_75"
     },
     {
       english: "hat",

@@ -6,8 +6,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const port = process.env.PORT || 5000;
 const app = express();
-const graphQLSchema = require("./graphql/schemas");
-const graphQLResolvers = require("./graphql/resolvers");
+const graphQLSchema = require("./graphql/schemas/index");
+const graphQLResolvers = require("./graphql/resolvers/index");
 
 app.use(express.json());
 app.use("*", cors());

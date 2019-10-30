@@ -28,7 +28,7 @@ module.exports = buildSchema(
       }
 
       type RootQuery{
-        quizzes: [Quiz]
+        quiz: [Quiz]
         cards: [Card]
         card(english: String): Card! 
       }

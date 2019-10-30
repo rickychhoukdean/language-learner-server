@@ -1,6 +1,6 @@
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 const CardSchema = new Schema({
   english: {
     type: String
@@ -16,4 +16,5 @@ const CardSchema = new Schema({
     ref: "Quiz"
   }
 });
-module.exports =  mongoose.model("Card", CardSchema);
+
+module.exports = Card =  mongoose.model("Card", CardSchema);

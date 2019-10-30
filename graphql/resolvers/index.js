@@ -14,38 +14,28 @@ module.exports = {
       throw new Error(error);
     }
   },
-  quizzes: async () => {
+  quiz: async () => {
     try {
-      console.log("hi");
       const card = await Quiz.find().exec();
       if (!card) {
-        console.log("hi");
         throw new Error("card not found");
       } else {
-        console.log("hi");
         return card;
       }
     } catch (error) {
-      console.log("hi");
       throw new Error(error);
     }
   },
   createQuiz: async args => {
-    console.log("sfioasfoiasb")
-    try {
-      console.log("iohoias")
-      const quiz = await Quiz.create({
-        name: args.quizInput.name
+    const quiz = new Quiz({ name: args.quizInput.name });
+    quiz
+      .save()
+      .then(result => {
+        console.log(result);
+        return {...result._doc};
+      })
+      .catch(err => {
+        console.log(err);
       });
-      if (!quiz) {
-        console.log("quiz")
-        throw new Error("Error while creating new comment");
-      } else {
-        console.log("no")
-        return quiz;
-      }
-    } catch (error) {
-      throw new Error("Errors occurs when creating user " + error);
-    }
   }
 };
