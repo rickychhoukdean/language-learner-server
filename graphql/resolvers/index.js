@@ -1,6 +1,8 @@
 const Card = require("../../mongo/models/Card");
 const Quiz = require("../../mongo/models/Quiz");
 
+
+
 module.exports = {
   cards: async () => {
     try {
@@ -38,13 +40,29 @@ module.exports = {
       });
   },
   createCard: async args => {
-    console.log(args.cardInput);
-
+    console.log(args.cardInput.quiz.name)
     const card = new Card({
       english: args.cardInput.english,
       french: args.cardInput.french,
       picture: args.cardInput.picture,
-      quiz: args.cardInput.quiz
+      quiz: args.cardInput.quiz.name
     });
+
+    console.log(card);
+
+    if (args.cardInput.quiz) {
+      try {
+        const quiz = await Quiz.findOne({ name: args.cardInput.quiz }).exec();
+        console.log(quiz);
+
+        if (!quiz) {
+          return card;
+        } else {
+          console.log(quiz);
+        }
+      } catch (err) {
+        throw new Error(error);
+      }
+    }
   }
 };
