@@ -1,17 +1,11 @@
 exports.Quiz=`
 type Quiz{
     _id: ID!
-    english: String!
-    french: String!
-    picture: String!
 }
 `
 
 exports.QuizInput=`
 name: String!
-english: String!
-french: String!
-picture: String!
 `
 
 exports.QuizQueries=`

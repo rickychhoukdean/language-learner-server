@@ -1,8 +1,6 @@
 const Card = require("../../mongo/models/Card");
 const Quiz = require("../../mongo/models/Quiz");
 
-
-
 module.exports = {
   cards: async () => {
     try {
@@ -29,40 +27,36 @@ module.exports = {
     }
   },
   createQuiz: async args => {
-    const quiz = new Quiz({ name: args.quizInput.name });
-    quiz
-      .save()
-      .then(result => {
-        return { ...result._doc };
-      })
-      .catch(err => {
-        console.log(err);
+    try {
+      const quiz = await Quiz.create({
+        name: args.quizInput.name
       });
+      if (!quiz) {
+        throw new Error("create qUIZ failed");
+      } else {
+        return { ...quiz._doc };
+      }
+    } catch (error) {
+      throw new Error("error while creating Card " + error);
+    }
   },
   createCard: async args => {
-    console.log(args.cardInput.quiz.name)
-    const card = new Card({
-      english: args.cardInput.english,
-      french: args.cardInput.french,
-      picture: args.cardInput.picture,
-      quiz: args.cardInput.quiz.name
-    });
-
-    console.log(card);
-
-    if (args.cardInput.quiz) {
-      try {
-        const quiz = await Quiz.findOne({ name: args.cardInput.quiz }).exec();
-        console.log(quiz);
-
-        if (!quiz) {
-          return card;
-        } else {
-          console.log(quiz);
-        }
-      } catch (err) {
-        throw new Error(error);
+    try {
+      const card = await Card.create({
+        english: args.cardInput.english,
+        french: args.cardInput.french,
+        picture: args.cardInput.picture,
+        quiz: args.cardInput.quiz.name
+      });
+      if (!card) {
+        throw new Error("create card failed");
+      } else {
+        return { ...card._doc };
       }
+    } catch (error) {
+      throw new Error("error while creating Card " + error);
     }
   }
+
+  // }
 };

@@ -8,10 +8,10 @@ type Card{
 `
 
 exports.CardInput=`
-name: String!
 english: String!
 french: String!
 picture: String!
+
 `
 
 exports.CardQueries=`
